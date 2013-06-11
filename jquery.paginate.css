@@ -1,9 +1,18 @@
+/*
+ * This file is part of the dozoisch/paginator
+ *
+ * (C) 2013 Hugo Dozois-Caouette
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 /* 
     Document   : css
     Created on : Feb 28, 2013, 7:08:19 PM
+    Modified   : Jun 11, 2013
     Author     : hugo
     Description:
-        Purpose of the stylesheet follows.
+        Simple stylesheet for the paginator plugin
 */
 
 .paginateContainer {

@@ -1,7 +1,15 @@
+/*
+ * This file is part of the dozoisch/paginator
+ *
+ * (C) 2013 Hugo Dozois-Caouette
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 /**
  * @author Hugo Dozois-Caouette
- * @version 1.0.1
- * @date 23 mars 2013
+ * @version 1.0.2
+ * @date June 11th 2013
  * 
  * @param {object} $ jQuery librairy
  * @param {object} Math The math librairy
