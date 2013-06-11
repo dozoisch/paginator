@@ -3,7 +3,7 @@ Paginator
 
 A simple jQuery paginator.
 
-You can see a [live use right here][fiddle]
+You can see a [live use right here][fiddle].
 
 This plugin is provided with a CSS sheet but is totally customizable. It can work with any number of tables on a page and each table can get its own parameters. The text on the button is also fully customizable via parameters, can be done within HTML or JavaScript.
 
@@ -21,11 +21,13 @@ When using JavaScript, the parameters are camelCased, but when using `data-` you
 
 You can also use both types at the same time,the JavaScript (dynamic) parameters have precedence over HTML ones though. This enables you to generate lets say text parameter from the back-end and other ones on the fly.
 
-*Note that when passing parameters from HTML, you still have to initiate the plugin with the `paginate` function.
+*Note that when passing parameters from HTML, you still have to initiate the plugin with the `paginate` function.*
+
+*There are a few more actions you can do with the plugin, these are described in the advanced usage section.*
 
 ### Examples
 
-In JavaScript :
+**Passing parameters from the JavaScript :**
 
 ```js
 jQuery(document).ready(function () {
@@ -36,7 +38,7 @@ jQuery(document).ready(function () {
 });
 ```
 
-Passing parameters from HTML :
+**Passing parameters from HTML :**
 
 ```html
 <table data-elems-per-page="2" data-max-buttons="6"><!-- ... --></table>
@@ -79,5 +81,36 @@ Full Parameter List
 | previousSetText | String | `&hellip;` | The text to put on the previous set button. The text can contain HTML entities, but they have to be HTML encoded. |
 | nextSetText | String | `&hellip;` |  The text to put on the next set button. The text can contain HTML entities, but they have to be HTML encoded. |
 | showAllText | String | `&dArr;` |  The text to put on the show all button. The text can contain HTML entities, but they have to be HTML encoded. |
+
+
+Advanced Usage
+----------
+
+The plugin has 3 more method, other than the initialization, you can use. They can be called via jQuery by adding a string parameter.
+
+### Update
+
+This basically does a show page. It can be used if the tables is update dynamically or re-sorted and you want to redo the display.
+
+```js
+jQuery('table').paginate('update', 1);
+```
+
+### Change Settings
+
+This updates the settings on the fly and then re-display the first page. This is mainly to be used with "elements per page" buttons. It can only be used with the two basic parameters.
+
+```js
+jQuery('table').paginate('changeSetting',{'elemsPerPage' : 10});
+```
+
+### Destroy
+
+This removes the paginator from the table and re-display the whole table.
+
+```js
+jQuery('table').paginate('destroy');
+```
+
 
 [fiddle]:http://jsfiddle.net/dozoisch/EBSBx/
