@@ -5,7 +5,7 @@ A simple jQuery paginator.
 
 You can see a [live use right here][fiddle]
 
-This plugin is provided with a CSS sheet but is totally customizable. It can work with any number of tables on a page and each table can get its own parameters.
+This plugin is provided with a CSS sheet but is totally customizable. It can work with any number of tables on a page and each table can get its own parameters. The text on the button is also fully customizable via parameters, can be done within HTML or JavaScript.
 
 
 Basic Usage
@@ -16,12 +16,68 @@ jQuery(document).ready(function () {
     jQuery('table').paginate();
 });
 ```
+The parameters can be passed on the HTML of the tables using `data-parameter-name` or in a JavaScript Object when calling the function `paginate`.
+When using JavaScript, the parameters are camelCased, but when using `data-` you have to use hyphens.
+
+You can also use both types at the same time,the JavaScript (dynamic) parameters have precedence over HTML ones though. This enables you to generate lets say text parameter from the back-end and other ones on the fly.
+
+*Note that when passing parameters from HTML, you still have to initiate the plugin with the `paginate` function.
+
+### Examples
+
+In JavaScript :
+
+```js
+jQuery(document).ready(function () {
+    jQuery('table').paginate({
+        'elemsPerPage': 2,
+        'maxButtons': 6
+    });
+});
+```
+
+Passing parameters from HTML :
+
+```html
+<table data-elems-per-page="2" data-max-buttons="6"><!-- ... --></table>
+```
 
 
 Full Parameter List
 ----------
 
-SOON
+### Basic Parameters
 
+| Parameter | Type | Default | Description |
+| --------- |:----:|:-------:| ----------- |
+| elemsPerPage | Integer | 5 | Max number of element shown on a page |
+| maxButtons | Integer | 5 | The max number of button showing in the paginator bar. This includes the "..." buttons, but does not include the show all button. |
+
+
+### CSS Parameters
+
+| Parameter | Type | Default | Description |
+| --------- |:----:|:-------:| ----------- |
+| disabledClass | String | paginateDisabled | The CSS class to be applied on disabled buttons. |
+| activeClass | String | paginateActive | The CSS class to be applied on the current active button. |
+| listClass | String | paginateList | The CSS class to be applied on the list containing buttons. |
+| showAllListClass | String | paginateShowAllList | The CSS class to be applied on the list containing the Show All button. |
+| previousClass | String | paginatePrevious | The CSS class to be applied on the previous page button. |
+| nextClass | String | paginateNext | The CSS class to be applied on the next page button. |
+| previousSetClass | String | paginatePreviousSet | The CSS class to be applied to the button used to move to the previous set of buttons. |
+| nextSetClass | String | paginateNextSet | The CSS class to be applied to the button used to move to the next set of buttons. |
+| showAllClass | String | paginateShowAll | The CSS class to be applied to the Show All button. |
+| pageClass | String | paginatePage | The CSS class to be applied on the page buttons. |
+| anchorClass | String | paginateAnchor | The CSS class to be applied on the page button anchors. |
+
+### Text Parameters
+
+| Parameter | Type | Default | Description |
+| --------- |:----:|:-------:| ----------- |
+| previousText | String | `&laquo;` | The text to put on the previous page button. The text can contain HTML entities, but they have to be HTML encoded. |
+| nextText | String | `&raquo;` | The text to put on the next page button. The text can contain HTML entities, but they have to be HTML encoded. |
+| previousSetText | String | `&hellip;` | The text to put on the previous set button. The text can contain HTML entities, but they have to be HTML encoded. |
+| nextSetText | String | `&hellip;` |  The text to put on the next set button. The text can contain HTML entities, but they have to be HTML encoded. |
+| showAllText | String | `&dArr;` |  The text to put on the show all button. The text can contain HTML entities, but they have to be HTML encoded. |
 
 [fiddle]:http://jsfiddle.net/dozoisch/EBSBx/
