@@ -6,14 +6,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-/* 
-    Document   : css
-    Created on : Feb 28, 2013, 7:08:19 PM
-    Modified   : Jun 11, 2013
-    Author     : hugo
-    Description:
-        Simple stylesheet for the paginator plugin
-*/
+/*
+ *  Document   : css
+ *  Author     : dozoisch
+ *  version    : 1.1.0
+ *  Description: Simple stylesheet for the paginator plugin
+ */
 
 .paginateContainer {
     display : block;
@@ -101,7 +99,7 @@
     border-bottom: 1px solid #08c;
 }
 
-.paginateContainer .paginateList .paginateDisabled .paginateAnchor, 
+.paginateContainer .paginateList .paginateDisabled .paginateAnchor,
 .paginateContainer .paginateList .paginateDisabled .paginateAnchor:hover {
     color : #bbb;
     background-color: #eee;

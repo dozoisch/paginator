@@ -7,10 +7,10 @@
  * file that was distributed with this source code.
  */
 /**
- * @author Hugo Dozois-Caouette
- * @version 1.0.2
- * @date June 11th 2013
- * 
+ * @author dozoisch
+ * @version 1.1.0
+ * @url github.com/dozoisch/paginator
+ *
  * @param {object} $ jQuery librairy
  * @param {object} Math The math librairy
  * @returns {object} Returns the table
@@ -170,7 +170,7 @@
     };
 
     /**
-     * 
+     *
      * @param {int} pageNumber 1indexed
      * @returns {_L1.Paginator.prototype}
      */
@@ -213,7 +213,7 @@
     };
 
     /**
-     * 
+     *
      * @param {integer} pageNumber 1 indexed.
      * @returns {_L1.Paginator.prototype}
      */

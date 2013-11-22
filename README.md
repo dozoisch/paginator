@@ -5,6 +5,10 @@ A simple jQuery paginator.
 
 You can see a [live use right here][fiddle].
 
+It has been tested with jQuery 1.9.1 up to 2.0.2 right now.
+
+Make sure you load jQuery before loading the plugin!
+
 This plugin is provided with a CSS sheet but is totally customizable. It can work with any number of tables on a page and each table can get its own parameters. The text on the button is also fully customizable via parameters, can be done within HTML or JavaScript.
 
 
