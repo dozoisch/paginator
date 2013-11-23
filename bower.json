@@ -1,9 +1,9 @@
 {
   "name": "jquery-paginator",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": ["dozoisch"],
   "keywords": [
-    "paginator", "paginate", "jquery"
+    "paginator", "paginate", "jquery","jquery-paginator", "dozoisch"
   ],
   "repository": {"type": "git", "url": "git://github.com/dozoisch/paginator.git"},
   "main": "jquery.paginate.js",
