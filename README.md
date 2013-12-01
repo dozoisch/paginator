@@ -11,6 +11,20 @@ Make sure you load jQuery before loading the plugin!
 
 This plugin is provided with a CSS sheet but is totally customizable. It can work with any number of tables on a page and each table can get its own parameters. The text on the button is also fully customizable via parameters, can be done within HTML or JavaScript.
 
+Installation
+----------
+
+With bower:
+
+    bower install jquery-paginator
+
+Without bower:
+
+    git clone https://github.com/dozoisch/paginator.git
+
+Then include the files you need!
+
+
 
 Basic Usage
 ----------

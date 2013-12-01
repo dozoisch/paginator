@@ -8,12 +8,12 @@
  */
 /**
  * @author dozoisch
- * @version 1.1.1
+ * @version 1.2.0
  * @url github.com/dozoisch/paginator
  *
- * @param {object} $ jQuery librairy
- * @param {object} Math The math librairy
- * @returns {object} Returns the table
+ * @param {object} $ jQuery library
+ * @param {object} Math The Math library
+ * @returns {object} Returns the table for chainability
  */
 (function ($, Math) {
     "use strict";
@@ -49,29 +49,35 @@
 
             var table = $(this);
             if (table.data(prefix)) {
-                return;
+                return table;
             }
             var paginator = new Paginator(this, options);
 
             table.data(prefix, paginator);
+
+            return this;
         },
         update: function (pageNumber) {
-            $(this).data(prefix).showPage(pageNumber || 1);
+            $(this).data(prefix).rebuild().showPage(pageNumber || 1);
+            return this;
         },
-        changeSettings: function (options) {
-            $(this).data(prefix).updateConfig(options || {}).showPage(1);
+        changeSettings: function (options, pageNumber) {
+            $(this).data(prefix).updateConfig(options || {}).showPage(pageNumber || 1);
+            return this;
         },
         destroy: function () {
             var elem = $(this);
             elem.data(prefix).showAll().destroy();
             elem.removeData(prefix);
+            return this;
         }
     };
 
     $.fn.paginate = function (args) {
+        var parameters = Array.prototype.slice.call(arguments, 1);
         return this.each(function () {
             if (methods[args]) {
-                return methods[args].apply(this, Array.prototype.slice.call(arguments, 1));
+                return methods[args].apply(this, parameters);
             } else if (typeof args === 'object' || !args) {
                 return methods.init.apply(this, [args]);
             } else {
@@ -88,11 +94,9 @@
         this.getConfig = function () {
             return config;
         };
-
         this.getContainer = function () {
             return container;
         };
-
         this.getTable = function () {
             return table;
         };
@@ -109,17 +113,25 @@
         };
 
         this.updateConfig = function (settings) {
-            $.extend(config, settings);
-            return this;
+            config = $.extend(config, settings);
+            return this.rebuild();
         };
+
         this.destroy = function () {
             container.remove();
             return table;
         };
-
-        container = new Builder(this);
-        table.before(container);
-        this.showPage(1);  // @todo settings
+        this.rebuild = function () {
+            this.destroy();
+            return this.build();
+        };
+        this.build = function() {
+            container = new Builder(this);
+            table.before(container);
+            return this;
+        };
+        this.build();
+        this.showPage(1);
     };
 
     Paginator.prototype.previousPage = function () {
@@ -181,7 +193,12 @@
         var tableTr = this.getTable().find('tbody tr');
         var maxPageNumber = Math.ceil(tableTr.length / config['elemsPerPage']);
 
-        if (pageNumber > maxPageNumber) {
+        if (maxPageNumber === 0) {
+            container.find(this.getSelector('previous')).addClass(config['disabledClass']);
+            container.find(this.getSelector('next')).addClass(config['disabledClass']);
+            container.find(this.getSelector('showAll')).addClass(config['disabledClass']);
+            return this;
+        } else if (pageNumber > maxPageNumber) {
             pageNumber = maxPageNumber;
         } else if (pageNumber < 1) {
             pageNumber = 1;
@@ -223,7 +240,6 @@
 
         // Zero Indexed
         --pageNumber;
-
         var numberOfPage = Math.ceil(this.getTable().find('tbody tr').length / config['elemsPerPage']) - 1;
         // 2 buttons (previous, next sets) + 1 the first button
         var maxButtons = config['maxButtons'] - 3;
