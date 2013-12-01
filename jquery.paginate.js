@@ -8,7 +8,7 @@
  */
 /**
  * @author dozoisch
- * @version 1.2.0
+ * @version 1.2.1
  * @url github.com/dozoisch/paginator
  *
  * @param {object} $ jQuery library
@@ -136,7 +136,7 @@
 
     Paginator.prototype.previousPage = function () {
         var previousPageNumber = parseInt(
-            this.getContainer().find(this.getSelector(['page', 'active'])).children('a').text()) - 1;
+            this.getContainer().find(this.getSelector(['page', 'active'])).children('a').text(), 10) - 1;
         if (isNaN(previousPageNumber)) {
             previousPageNumber = 1;
         }
@@ -146,7 +146,7 @@
 
     Paginator.prototype.nextPage = function () {
         var nextPageNumber = parseInt(this.getContainer().find(
-            this.getSelector(['page', 'active'])).children('a').text()) + 1;
+            this.getSelector(['page', 'active'])).children('a').text(), 10) + 1;
         if (isNaN(nextPageNumber)) {
             nextPageNumber = 1;
         }
@@ -156,14 +156,14 @@
 
     Paginator.prototype.previousSet = function () {
         var previousPage = parseInt(this.getContainer().find(
-            this.getSelector('page')).filter(visibleFilter).first().children('a').text()) - 1;
+            this.getSelector('page')).filter(visibleFilter).first().children('a').text(), 10) - 1;
         this.showSet(previousPage);
         return this;
     };
 
     Paginator.prototype.nextSet = function () {
         var nextPage = parseInt(this.getContainer().find(
-            this.getSelector('page')).filter(visibleFilter).last().children('a').text()) + 1;
+            this.getSelector('page')).filter(visibleFilter).last().children('a').text(), 10) + 1;
         this.showSet(nextPage);
         return this;
     };
@@ -315,11 +315,13 @@
             });
         }
 
+        var pageButtonClick = function (e) {
+            e.preventDefault();
+            paginate.showPage.apply(paginate, [parseInt($(this).text(), 10)]);
+        };
+
         for (var i = 1; i <= numberOfPage; i++) {
-            list[index++] = createLi('page', i).click(function (e) {
-                e.preventDefault();
-                paginate.showPage.apply(paginate, [parseInt($(this).text())]);
-            });
+            list[index++] = createLi('page', i).click(pageButtonClick);
         }
 
         if (inNeedOfSetButtons) {
@@ -351,8 +353,8 @@
         return container;
     };
 
-    function visibleFilter () {
+    var visibleFilter = function () {
         return $(this).css('display') !== 'none';
-    }
+    };
 
 })(jQuery, Math);

@@ -9,7 +9,7 @@
 /*
  *  Document   : css
  *  Author     : dozoisch
- *  version    : 1.2.0
+ *  version    : 1.2.1
  *  Description: Simple stylesheet for the paginator plugin
  */
 
@@ -106,6 +106,3 @@
     cursor: default;
     border: 1px solid #ddd;
 }
-
-
-
