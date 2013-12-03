@@ -8,7 +8,7 @@
  */
 /**
  * @author dozoisch
- * @version 1.2.1
+ * @version 1.2.2
  * @url github.com/dozoisch/paginator
  *
  * @param {object} $ jQuery library

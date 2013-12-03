@@ -9,7 +9,7 @@
 /*
  *  Document   : css
  *  Author     : dozoisch
- *  version    : 1.2.1
+ *  version    : 1.2.2
  *  Description: Simple stylesheet for the paginator plugin
  */
 
@@ -75,8 +75,8 @@
     font-weight: bold;
 }
 
-.paginateContainer .paginateAnchor:hover,
-.paginateContainer .paginateAnchor:hover {
+.paginateContainer .paginatePrevious .paginateAnchor:hover,
+.paginateContainer .paginateNext .paginateAnchor:hover {
     border: 1px solid #2ae;
 }
 
@@ -100,7 +100,7 @@
 }
 
 .paginateContainer .paginateDisabled .paginateAnchor,
-.paginateContainer.paginateDisabled .paginateAnchor:hover {
+.paginateContainer .paginateDisabled .paginateAnchor:hover {
     color : #bbb;
     background-color: #eee;
     cursor: default;
