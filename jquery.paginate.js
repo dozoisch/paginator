@@ -8,7 +8,7 @@
  */
 /**
  * @author dozoisch
- * @version 1.2.2
+ * @version 1.2.3
  * @url github.com/dozoisch/paginator
  *
  * @param {object} $ jQuery library
@@ -207,7 +207,8 @@
         container.find(this.getSelector('disabled')).removeClass(config['disabledClass']);
         if (pageNumber === 1) {
             container.find(this.getSelector('previous')).addClass(config['disabledClass']);
-        } else if (pageNumber === maxPageNumber) {
+        }
+        if (pageNumber === maxPageNumber) {
             container.find(this.getSelector('next')).addClass(config['disabledClass']);
         }
 

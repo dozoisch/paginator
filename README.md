@@ -104,11 +104,11 @@ Full Parameter List
 Advanced Usage
 ----------
 
-The plugin has 3 more method, other than the initialization, you can use. They can be called via jQuery by adding a string parameter.
+The plugin has 3 more methods, other than the initialization, you can use. They can be called via jQuery by adding a string parameter.
 
 ### Update
 
-This basically does a show page. It can be used if the tables is update dynamically or re-sorted and you want to redo the display.
+This basically destroys and recreates the paginator. It can be used if the table is updated dynamically or re-sorted and you want to redo the display.
 
 ```js
 jQuery('table').paginate('update', 1);
@@ -116,15 +116,15 @@ jQuery('table').paginate('update', 1);
 
 ### Change Settings
 
-This updates the settings on the fly and then re-display the first page. This is mainly to be used with "elements per page" buttons. It can only be used with the two basic parameters.
+This updates the settings on the fly and then re-display the first page. This will destroy and recreate the paginator to show new settings.
 
 ```js
-jQuery('table').paginate('changeSetting',{'elemsPerPage' : 10});
+jQuery('table').paginate('changeSettings',{'elemsPerPage' : 10});
 ```
 
 ### Destroy
 
-This removes the paginator from the table and re-display the whole table.
+This removes the paginator from the table and makes sure to re-display the whole table.
 
 ```js
 jQuery('table').paginate('destroy');

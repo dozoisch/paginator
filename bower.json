@@ -1,6 +1,6 @@
 {
   "name": "jquery-paginator",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "author": ["dozoisch"],
   "keywords": [
     "paginator", "paginate", "jquery","jquery-paginator", "dozoisch"
@@ -11,5 +11,5 @@
     "jquery": ">=1.9.1"
   },
   "license": "./LICENSE",
-  "ignore": ["bower_components"]
+  "ignore": ["bower_components", "Makefile"]
 }
